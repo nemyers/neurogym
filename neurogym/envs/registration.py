@@ -63,6 +63,7 @@ NATIVE_ALLOW_LIST = [
     'DawTwoStep',
     'DelayComparison',
     'DelayMatchCategory',
+    'DelayMatchCategoryMod',
     'DelayMatchSample',
     'DelayMatchSampleDistractor1D',
     'DelayPairedAssociation',
