@@ -78,7 +78,7 @@ class DelayMatchCategoryMod(ngym.TrialEnv):
         #test_theta = (test_category + self.rng.rand()) * np.pi
         sample_theta = (sample_category + self.rng.rand()*self.stim_range - 0.0) * np.pi
         test_theta = (test_category + self.rng.rand()*self.stim_range - 0.0) * np.pi
-        
+        trial.update({'sample_theta': sample_theta, 'test_theta': test_theta})
 
         #stim_sample = np.cos(self.theta - sample_theta) * 0.5 + 0.5
         #stim_test = np.cos(self.theta - test_theta) * 0.5 + 0.5
@@ -100,7 +100,8 @@ class DelayMatchCategoryMod(ngym.TrialEnv):
         self.set_ob(0, 'test', where='fixation')
         self.add_ob(stim_sample, 'sample', where='stimulus')
         self.add_ob(stim_test, 'test', where='stimulus')
-        self.add_randn(0, self.sigma, ['sample', 'test'], where='stimulus')
+        # self.add_randn(0, self.sigma, ['sample', 'test'], where='stimulus')
+        self.add_randn(0, self.sigma, ['first_delay', 'test'], where='stimulus')
 
         self.set_groundtruth(self.action_space.name[ground_truth], 'test')
 
